@@ -1,10 +1,10 @@
-/* Este fragmento de código utiliza una expresión de función de invocación inmediata (IIFE) en
-TypeScript. */
-(()=> {
-    /* El código declara una variable constante `myName` de tipo `string` con el valor ``Nicolas''. Luego,
-    registra el valor de la variable `myName` en la consola. Todo el código está incluido en una
-    expresión de función invocada inmediatamente (IIFE) en TypeScript, lo que significa que la función
-    se ejecuta inmediatamente después de definirse. */
-        const myName: string = 'Nicolas';
-        console.log(myName);
-    })();
+import { libro} from "./libros";
+import { libreria } from "./funciones";
+
+
+const biblioteca = new libreria();
+const book= new libro("El Principito","Antoine de Saint-Exupéry","Ficción","Español","20","Puede estar disponible en tapa dura, tapa blanda y ebook, entre otros", "9788490431604","Es una novela corta que narra la historia de un joven príncipe que viaja por diferentes planetas", "nuevo","Disponible en librerías físicas y tiendas en línea","Originalmente publicado en 1943","iEditorial Siruela","100","Alrededor de 13 x 1 x 20 cm (ancho x profundidad x altura) en tapa blanda","Alrededor de 100-200 gramos en tapa blanda",false);
+
+
+biblioteca.addlibro(book);
+biblioteca.listarlibros();
