@@ -27,21 +27,21 @@ function agregarLibro(): void {
    
     const libro = new book(Titulo,Autor,Genero,idioma,Precio,ISBN,AñoPublicacion,editorial,paginas,);
     biblioteca.AgregarLibro(libro);
-    console.log('Libro agregado correctamente.');
+    console.log('Libro agregado');
 }
 
 
 function eliminarLibro(): void {
     const title = prompt('Ingrese el Titulo del libro a eliminar: ');
     biblioteca.EliminarLibro(title);
-    console.log('Libro eliminado correctamente.');
+    console.log('Libro eliminado');
 }
 
 
 function verLibros(): void {
     const libros = biblioteca.ObtenerLibros();
     if (libros.length === 0) {
-        console.log('No hay libros en la sección.');
+        console.log('No hay libros en la biblioteca');
     } else {
         libros.forEach(libro => {
             console.log
