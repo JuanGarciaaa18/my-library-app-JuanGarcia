@@ -1,10 +1,92 @@
-import { libro} from "./libros";
-import { libreria } from "./funciones";
+import { book } from './libros';
+import { Seccion } from './librerias';
+import { libros } from './libro';
+/**
+ * !Instalacion de librerias Prompt-Sync
+ */
+import promptSync from 'prompt-sync';
+
+const prompt = promptSync();
+
+//Constante de la seccion
+
+const biblioteca = new Seccion('Realismo Mágico', 'Sección dedicada a libros del género Realismo Mágico', libros);
 
 
-const biblioteca = new libreria();
-const book= new libro("El Principito","Antoine de Saint-Exupéry","Ficción","Español","20","Puede estar disponible en tapa dura, tapa blanda y ebook, entre otros", "9788490431604","Es una novela corta que narra la historia de un joven príncipe que viaja por diferentes planetas", "nuevo","Disponible en librerías físicas y tiendas en línea","Originalmente publicado en 1943","iEditorial Siruela","100","Alrededor de 13 x 1 x 20 cm (ancho x profundidad x altura) en tapa blanda","Alrededor de 100-200 gramos en tapa blanda",false);
+function agregarLibro(): void {
+   
+    const Titulo= prompt('Ingrese el Titulo del libro: ')
+   const Autor= prompt('Ingrese el Autor del libro: ');
+   const Genero=prompt('Ingrese el Genero del libro: ');
+   const idioma= prompt('Ingrese el idioma del libro: ');    
+   const Precio=parseInt(prompt('Ingrese el Precio del libro: '), 10);
+   const ISBN= parseInt(prompt('Ingrese el ISBN del libro: '), 10);
+   const AñoPublicacion= new Date(prompt('Ingrese la fecha de publicación del libro (YYYY-MM-DD): '));
+   const editorial= prompt('Ingrese el editorial del libro: ');
+   const paginas=parseInt(prompt('Ingrese las paginas del libro: '), 10);
+   
+    const libro = new book(Titulo,Autor,Genero,idioma,Precio,ISBN,AñoPublicacion,editorial,paginas,);
+    biblioteca.AgregarLibro(libro);
+    console.log('Libro agregado correctamente.');
+}
 
 
-biblioteca.addlibro(book);
-biblioteca.listarlibros();
+function eliminarLibro(): void {
+    const title = prompt('Ingrese el Titulo del libro a eliminar: ');
+    biblioteca.EliminarLibro(title);
+    console.log('Libro eliminado correctamente.');
+}
+
+
+function verLibros(): void {
+    const libros = biblioteca.ObtenerLibros();
+    if (libros.length === 0) {
+        console.log('No hay libros en la sección.');
+    } else {
+        libros.forEach(libro => {
+            console.log
+            (` Título: ${libro.Titulo},
+                Autor: ${libro.Autor}, 
+                Genero: ${libro.Genero},
+                Idioma: ${libro.idioma},
+                Precio: ${libro.Precio},
+                ISBN: ${libro.ISBN},
+                Año de Publicación: ${libro.AñoPublicacion},
+                Editorial: ${libro.editorial},
+                Paginas: ${libro.paginas},`)
+                ;
+        });
+    }
+}
+
+
+function menu(): void {
+    let opcion: string;
+    do {
+        console.log('\n--- Menú ---');
+        console.log('1. Agregar libro');
+        console.log('2. Eliminar libro');
+        console.log('3. Ver libros');
+        console.log('4. Salir');
+        opcion = prompt('Seleccione una opción: ');
+
+        switch (opcion) {
+            case '1':
+                agregarLibro();
+                break;
+            case '2':
+                eliminarLibro();
+                break;
+            case '3':
+                verLibros();
+                break;
+            case '4':
+                console.log('Saliendo...');
+                break;
+            default:
+                console.log('Opción no válida. Intente de nuevo.');
+        }
+    } while (opcion !== '4');
+}
+
+menu();
