@@ -29,9 +29,19 @@ export class Seccion {
             }
         }
     }
-
-
-
+    
+    buscarlibrotitulo(title: string): void {
+        let librobuscar: book | undefined = libros.find((Libros: book) => {
+            return Libros.Titulo===title
+            
+        });
+    
+        if (librobuscar) {
+            console.log(librobuscar);
+        } else {
+            console.log('No se encontró ningún libro con ese título');
+        }
+    }
     ObtenerLibros(): book[] {
         return this.Libros;
     }

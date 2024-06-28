@@ -38,7 +38,15 @@ function eliminarLibro(): void {
 }
 
 
-function verLibros(): void {
+
+function buscarlibroportitulo(): void {
+    let librobuscar1= prompt("Ingrese el título del libro: ") 
+    biblioteca.buscarlibrotitulo(librobuscar1);
+    console.log('Libro buscado');
+}
+
+
+function verLibros(): void {    
     const libros = biblioteca.ObtenerLibros();
     if (libros.length === 0) {
         console.log('No hay libros en la biblioteca');
@@ -67,7 +75,8 @@ function menu(): void {
         console.log('1. Agregar libro');
         console.log('2. Eliminar libro');
         console.log('3. Ver libros');
-        console.log('4. Salir');
+        console.log('4. Buscar Libro por Titulo');
+        console.log('5. Salir');
         opcion = prompt('Seleccione una opción: ');
 
         switch (opcion) {
@@ -81,8 +90,12 @@ function menu(): void {
                 verLibros();
                 break;
             case '4':
-                console.log('Saliendo...');
+                buscarlibroportitulo();
                 break;
+            case '5':
+                console.log('Saliendo...');
+               
+                break
             default:
                 console.log('Opción no válida. Intente de nuevo.');
         }
