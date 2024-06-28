@@ -75,7 +75,7 @@ function menu(): void {
         console.log('1. Agregar libro');
         console.log('2. Eliminar libro');
         console.log('3. Ver libros');
-        console.log('4. Buscar Libro por Titulo');
+        console.log('4. Buscar Libro por Titulo ');
         console.log('5. Salir');
         opcion = prompt('Seleccione una opción: ');
 
